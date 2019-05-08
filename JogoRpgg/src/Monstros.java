@@ -1,12 +1,26 @@
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 
+@Entity
 public class Monstros {
+	@Id
+	@GeneratedValue
+	private int idMonstros;
 	
+	@ManyToOne
+	@JoinTable(name = "HPSM", joinColumns = @JoinColumn(name = "hpUsuario"), inverseJoinColumns = @JoinColumn(name = "VIDA"))
 	private int hpUsuario;
 	
-	private int hpComputador;
-	
+	@ManyToOne
+	@JoinTable(name = "Nome Monstro", joinColumns = @JoinColumn(name = "nomeUsuario"), inverseJoinColumns = @JoinColumn(name = "NOME"))
 	private String nome;
 	
+	@ManyToOne
+	@JoinTable(name = "Tipo Monstro", joinColumns = @JoinColumn(name = "tipoMonstro"), inverseJoinColumns = @JoinColumn(name = "TIPO"))
 	private String tipo;
 	
 	/*                            EM ANDAMENTO
@@ -41,14 +55,14 @@ public class Monstros {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-
+	
+/*(versão anterior)
 	public int getHpComputador() {
 		return hpComputador;
 	}
 
 	public void setHpComputador(int hpComputador) {
 		this.hpComputador = hpComputador;
-	}
-
+	}	*/
 
 }
