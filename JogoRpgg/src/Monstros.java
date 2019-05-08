@@ -14,7 +14,7 @@ public class Monstros {
 		this.hpUsuario = hpUsuario;
 		this.hpComputador = hpComputador;
 		this.nome = nome;
-		this.tipo = tipo;
+		this.tipo = tipo; ZZZZZZZZZZZZZ
 	}
 */
 	
