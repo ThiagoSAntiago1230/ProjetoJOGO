@@ -34,19 +34,15 @@ public class Jogo implements InterfaceJogo {
 		switch (gerarTipo) {
 		case 1:
 			tipo.setAgua("Agua");
-			tipo.getAgua();
 			break;
 		case 2:
 			tipo.setFogo("Fogo");
-			tipo.getFogo();
 			break;
 		case 3:
 			tipo.setGelo("Gelo");
-			tipo.getGelo();
 			break;
 		case 4:
 			tipo.setTerra("Terra");
-			tipo.getTerra();
 			break;
 			
 		}
