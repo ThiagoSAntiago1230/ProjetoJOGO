@@ -1,23 +1,12 @@
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-@Entity
 public class Adversario {
-	@Id
-	@GeneratedValue
+
 	public int id;
-	@ManyToOne
-	@JoinTable(name = "HPSA", joinColumns = @JoinColumn(name = "hpComputador"), inverseJoinColumns = @JoinColumn(name = "VIDA"))
+	
 	public int hpComputador;
-	@ManyToOne
-	@JoinTable(name = "Nome Adversario", joinColumns = @JoinColumn(name = "nomeAdversario"), inverseJoinColumns = @JoinColumn(name = "NOME"))
+	
 	public String nomeAdversario;
-	@ManyToOne
-	@JoinTable(name = "Tipo Adversario", joinColumns = @JoinColumn(name = "tipoAdversario"), inverseJoinColumns = @JoinColumn(name = "VIDA"))
+	
 	public String tipoAdversario;
 	
 	

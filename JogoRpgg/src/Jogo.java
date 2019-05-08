@@ -1,14 +1,8 @@
 import java.util.Random;
 import java.util.Scanner;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-@Entity
 public class Jogo implements InterfaceJogo {
-	@Id
-	@GeneratedValue
-	private int idJogo;
+
 	private Scanner ler;
 
 	Monstros monstro = new Monstros();
@@ -56,10 +50,14 @@ public class Jogo implements InterfaceJogo {
 	public int ataqueComputador() {
 		Random gerador = new Random();
 		return gerador.nextInt(5) + 1;
-	}
+		
 
+	}
+	String a ="";
 	public void imprimeHP(int hpUsuario, int hpComputador, int contagemEspeciais) {
-		monstro.setNome("VOCE GANHOU UM MONSTRO! d  um nome a ele: " + ler.nextLine());
+		System.out.println("VOCE GANHOU UM MONSTRO! d  um nome a ele: " + a);
+		String a = ler.nextLine();
+		monstro.setNome(a);
 		System.out.println("========================");
 		System.out.println("---HP do " + monstro.getNome() + ":" + hpUsuario);
 		System.out.println("---HP Computador: " + hpComputador);
@@ -69,7 +67,8 @@ public class Jogo implements InterfaceJogo {
 
 	public int batalha() {
 		/*
-		 * int hpUsuario = 150; int hpComputador = 15;
+		 * int hpUsuario = 150;
+		 * int hpComputador = 15;
 		 */
 		int contagemEspecial = 5;
 		int escolhaAtaque;
@@ -77,9 +76,13 @@ public class Jogo implements InterfaceJogo {
 
 		Adversario adversario = new Adversario();
 		adversario.setHpComputador(100);
+		
 		Monstros monstro = new Monstros();
 		monstro.setHpUsuario(100);
+		
+		
 		// monstro.setHpComputador(100);
+		
 		// monstro.setNome("VOCE GANHOU UM MONSTRO! d  um nome a ele: " +
 		// ler.nextLine());
 
