@@ -9,14 +9,6 @@ public class Monstros {
 	
 	private String tipo;
 	
-	/*                            EM ANDAMENTO
-	public Monstros(int hpUsuario, int hpComputador, String nome, String tipo) {
-		this.hpUsuario = hpUsuario;
-		this.hpComputador = hpComputador;
-		this.nome = nome;
-		this.tipo = tipo; ZZZZZZZZZZZZZ
-	}
-*/
 	
 	public int getHpUsuario() {
 		return hpUsuario;
