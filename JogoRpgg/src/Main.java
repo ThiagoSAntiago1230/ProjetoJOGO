@@ -28,6 +28,7 @@ public class Main {
 			System.out.println("FIM DE JOGO. Deseja continuar? (1) Sim (2) Não");
 			continua = ler.nextInt();
 		}
+		System.out.println("Então não joga po");
 
 	}
 

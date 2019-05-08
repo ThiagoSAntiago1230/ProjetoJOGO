@@ -8,35 +8,23 @@ public class Jogo implements InterfaceJogo {
 	Monstros monstro = new Monstros();
 
 	/*
-	
-	//a ideia desse metodo é gerar aleatoriamente um adversario com caractesticas diferentes, em vez de crialo de forma statica
 	 * 
-	public int gerarNomeAdversario() {
-		Random geradorNome = new Random();
-		return geradorNome.nextInt(4)+1;
-		//NÃO ENTENDO POR QUE DA ESSE ERRO :(//
-		int escolhaNome;
-		
-		escolhaNome =  gerarNomeAdversario();
-		
-		switch (escolhaNome) {
-		case 1:
-			System.out.println("Monstro de fogo motivado");
-			break;
-		case 2:
-			System.out.println("Monstro de agua motivado");
-			break;
-		case 3:
-			System.out.println("Monstro de gelo motivado");
-			break;
-		case 4:
-			System.out.println("Monstro de terra motivado");
-			break;
-		}
-	}
-	
-	*/
-	
+	 * //a ideia desse metodo é gerar aleatoriamente um adversario com caractesticas
+	 * diferentes, em vez de crialo de forma statica
+	 * 
+	 * public int gerarNomeAdversario() { Random geradorNome = new Random(); return
+	 * geradorNome.nextInt(4)+1; //NÃO ENTENDO POR QUE DA ESSE ERRO :(// int
+	 * escolhaNome;
+	 * 
+	 * escolhaNome = gerarNomeAdversario();
+	 * 
+	 * switch (escolhaNome) { case 1:
+	 * System.out.println("Monstro de fogo motivado"); break; case 2:
+	 * System.out.println("Monstro de agua motivado"); break; case 3:
+	 * System.out.println("Monstro de gelo motivado"); break; case 4:
+	 * System.out.println("Monstro de terra motivado"); break; } }
+	 * 
+	 */
 
 	public int ataqueUsuario() {
 		ler = new Scanner(System.in);
@@ -50,14 +38,22 @@ public class Jogo implements InterfaceJogo {
 	public int ataqueComputador() {
 		Random gerador = new Random();
 		return gerador.nextInt(5) + 1;
-		
 
 	}
-	String a ="";
+
+	public int criarMonstro() {
+		ler = new Scanner(System.in);
+		System.out.println("VOCE GANHOU UM MONSTRO! dÊ um nome a ele: ");
+		monstro.setNome(ler.nextLine());
+		return 1;
+	}
+
+//	String a ="";
 	public void imprimeHP(int hpUsuario, int hpComputador, int contagemEspeciais) {
-		System.out.println("VOCE GANHOU UM MONSTRO! dÊ um nome a ele: " + a);
-		String a = ler.nextLine();
-		monstro.setNome(a);
+//		ler = new Scanner(System.in);
+//		System.out.println("VOCE GANHOU UM MONSTRO! dÊ um nome a ele: ");
+//		monstro.setNome(ler.nextLine());
+//		a = ler.nextLine();
 		System.out.println("========================");
 		System.out.println("---HP do " + monstro.getNome() + ":" + hpUsuario);
 		System.out.println("---HP Computador: " + hpComputador);
@@ -67,8 +63,7 @@ public class Jogo implements InterfaceJogo {
 
 	public int batalha() {
 		/*
-		 * int hpUsuario = 150;
-		 * int hpComputador = 15;
+		 * int hpUsuario = 150; int hpComputador = 15;
 		 */
 		int contagemEspecial = 5;
 		int escolhaAtaque;
@@ -76,13 +71,12 @@ public class Jogo implements InterfaceJogo {
 
 		Adversario adversario = new Adversario();
 		adversario.setHpComputador(100);
-		
-		Monstros monstro = new Monstros();
+
+		// Monstros monstro = new Monstros();
 		monstro.setHpUsuario(100);
-		
-		
+
 		// monstro.setHpComputador(100);
-		
+
 		// monstro.setNome("VOCE GANHOU UM MONSTRO! dÊ um nome a ele: " +
 		// ler.nextLine());
 
@@ -99,23 +93,27 @@ public class Jogo implements InterfaceJogo {
 			System.out.println("=======================\n");
 
 			while (monstro.getHpUsuario() > 0 && adversario.getHpComputador() > 0) {
+				if (monstro.getNome() == null) {
+					criarMonstro();
+				}
+
 				imprimeHP(monstro.getHpUsuario(), adversario.getHpComputador(), contagemEspecial);
 				escolhaAtaque = ataqueUsuario();
 				switch (escolhaAtaque) {
 				case 1:
-					System.out.println("O" + monstro.getNome() + "aplicou um soco.");
+					System.out.println(monstro.getNome() + " aplicou um soco.");
 
-					adversario.setHpComputador(-7);
+					adversario.setHpComputador(adversario.getHpComputador() - 7);
 					// hpComputador -=7
 					break;
 				case 2:
 					if (contagemEspecial > 0) {
-						System.out.println("O" + monstro.getNome() + "aplicou um ataque especial");
-						adversario.setHpComputador(-20);
+						System.out.println(monstro.getNome() + " aplicou um ataque especial.");
+						adversario.setHpComputador(adversario.getHpComputador() - 20);
 						// hpComputador -= 20;
 						contagemEspecial--;
 					} else {
-						System.out.println(monstro.getNome() + " não possui mais Ataques especiais!");
+						System.out.println(monstro.getNome() + " não possui mais Ataques especiais!.");
 					}
 					break;
 
@@ -133,28 +131,28 @@ public class Jogo implements InterfaceJogo {
 					escolhaAtaque = ataqueComputador();
 					switch (escolhaAtaque) {
 					case 1:
-						System.out.println("Monstro Adversario lhe aplicou um soco");
-						monstro.setHpUsuario(-2 + (int) (i / 5));
+						System.out.println("Monstro Adversario lhe aplicou um soco em " + monstro.getNome());
+						monstro.setHpUsuario(monstro.getHpUsuario() - 2 + (int) (i / 5));
 						// hpUsuario -= 2 + (int) (i / 5);
 						break;
 
 					case 2:
-						System.out.println("Monstro Adversario lhe aplicou um soco");
-						monstro.setHpUsuario(-2 + (int) (i / 5));
+						System.out.println("Monstro Adversario lhe aplicou um soco em " + monstro.getNome());
+						monstro.setHpUsuario(monstro.getHpUsuario() - 2 + (int) (i / 5));
 						break;
 					case 3:
-						System.out.println("Monstro Adversario lhe voltou com um chute");
-						monstro.setHpUsuario(-3 + (int) (i / 5));
+						System.out.println("Monstro Adversario voltou com um chute em" + monstro.getNome());
+						monstro.setHpUsuario(monstro.getHpUsuario() - 3 + (int) (i / 5));
 						break;
 
 					case 4:
-						System.out.println("Monstro Adversario lhe voltou com um chute");
-						monstro.setHpUsuario(-3 + (int) (i / 5));
+						System.out.println("Monstro Adversario lhe voltou com um chute em " + monstro.getNome());
+						monstro.setHpUsuario(monstro.getHpUsuario() - 3 + (int) (i / 5));
 						break;
 
 					case 5:
-						System.out.println("Monstro Adversario lhe devolveu com ataque especial.");
-						monstro.setHpUsuario(-5 + (int) (i / 5));
+						System.out.println("Monstro Adversario devolveu um ataque especial." + monstro.getNome());
+						monstro.setHpUsuario(monstro.getHpUsuario() - 5 + (int) (i / 5));
 						;
 						break;
 					}
@@ -162,8 +160,9 @@ public class Jogo implements InterfaceJogo {
 					System.out.println("inimigo derrotado");
 
 				}
+				/*
 				if (monstro.getHpUsuario() > 0) {
-					monstro.setHpUsuario(+5);
+					monstro.setHpUsuario(monstro.getHpUsuario()+5);
 					if (monstro.getHpUsuario() > 150) {
 						monstro.setHpUsuario(100);
 						// hpUsuario = 150;
@@ -174,7 +173,8 @@ public class Jogo implements InterfaceJogo {
 							contagemEspecial = 5;
 						}
 					}
-				}
+				} 
+				*/
 			}
 			i++;
 		}
