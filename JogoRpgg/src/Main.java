@@ -13,10 +13,9 @@ public class Main {
 		
 		while (continua == 1) {
 			
+			//jogo.gerarTipo();
 			
-			jogo.gerarTipo();
-			
-			//jogo.batalha();
+			jogo.batalha();
 			
 			/* 	            EM ANDAMENTO (GUARDAR O RECORDE DO GAME)
 			int pontos = jogo.batalha();

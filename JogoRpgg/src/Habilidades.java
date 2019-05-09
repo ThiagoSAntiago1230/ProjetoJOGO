@@ -1,12 +1,31 @@
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "Habilidades do seu Monstro")
 public class Habilidades {
+	@Id
+	@GeneratedValue
+	private int habilidades;
 	
+	@ManyToMany
+	@JoinTable(name = "Habilidades do seu Monstro", joinColumns = @JoinColumn(name = "socos"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
 	private String socos;
 	
+	@ManyToMany
+	@JoinTable(name = "Habilidades do seu Monstro", joinColumns = @JoinColumn(name = "especial"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
 	private String especial;
 	
+	@ManyToMany
+	@JoinTable(name = "Habilidades do seu Monstro", joinColumns = @JoinColumn(name = "chutes"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
 	private String chutes;
-
+	
+	
 	public String getSocos() {
 		return socos;
 	}
@@ -30,36 +49,5 @@ public class Habilidades {
 	public void setChutes(String chutes) {
 		this.chutes = chutes;
 	}
-	
-	
-	
-	
-	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	// EM ANDAMENTO, ATÉ QUINTA FAÇO E CONCERTO TUDO
-	// O JOGO TA FUNCIONANDO, SÓ ALGUMAS COISAS DO METODO BATALHA QUE N TA SENDO EXECUTADO MAS CONCERTO ATÉ QUINTA
-	// PODE DAR RUN NO MAIN SE QUISER TESTAR (Y)
 }

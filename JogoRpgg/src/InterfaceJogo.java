@@ -9,5 +9,11 @@ public interface InterfaceJogo {
 	
 	public int batalha();
 	
+	public int gerarTipo();
+	
+	public int criarMonstro();
+	
+	
+	
 
 }
