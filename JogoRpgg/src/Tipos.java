@@ -15,16 +15,16 @@ public class Tipos {
 	private int tipo_id;
 	@ManyToMany
 	@JoinTable(name = "Tipos", joinColumns = @JoinColumn(name = "gelo"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
-	private String gelo;
+	private String gelo = "gelo";
 	@ManyToMany
 	@JoinTable(name = "Tipos", joinColumns = @JoinColumn(name = "fogo"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
-	private String fogo;
+	private String fogo = "fogo";
 	@ManyToMany
 	@JoinTable(name = "Tipos", joinColumns = @JoinColumn(name = "terra"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
-	private String terra;
+	private String terra = "terra";
 	@ManyToMany
 	@JoinTable(name = "Tipos", joinColumns = @JoinColumn(name = "agua"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
-	private String agua;
+	private String agua = "agua";
 
 	
 	

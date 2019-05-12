@@ -3,7 +3,7 @@ public interface InterfaceJogo {
 	
 	public int ataqueUsuario();
 	
-	public int ataqueComputador();
+	public int ataqueAdversario();
 	
 	public void imprimeHP(int hpUsuario, int hpComputador, int contagemEspeciais);
 	
@@ -12,6 +12,10 @@ public interface InterfaceJogo {
 	public int gerarTipo();
 	
 	public int criarMonstro();
+	
+	public int gerarAdversario();
+	
+	public int score();
 	
 	
 	

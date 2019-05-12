@@ -1,3 +1,4 @@
+
 import java.util.Random;
 import java.util.Scanner;
 import javax.persistence.Entity;
@@ -10,10 +11,51 @@ public class Jogo implements InterfaceJogo {
 	private Scanner ler;
 
 	Monstros monstro = new Monstros();
-	
 	Tipos tipo = new Tipos();
+	Adversario adversario = new Adversario();
 
-
+	
+	public int score() {
+		int recorde = 0;
+		Jogo jogo = new Jogo();
+		int pontos = jogo.batalha();
+		System.out.println("Usuario chegou a " + pontos + " pontos ");
+		if(pontos > recorde) {
+			recorde = pontos;
+		}
+		System.out.println("RECORDE ATUAL = " + recorde);
+		return pontos;
+	}
+	
+	public int gerarAdversario() {
+		Random gerador = new Random();
+		int gerarAdversario = gerador.nextInt(4);
+		adversario.setLevelAdversario(1);
+		//PERGUNTAR AO PROFESSOR
+		adversario.setNomeAdversario1("Monstro sombrio de "+ gerarTipo()+ " level: "+ adversario.getLevelAdversario());
+		adversario.setNomeAdversario2("Monstro motivado de "+ gerarTipo()+ " level: "+ adversario.getLevelAdversario());
+		adversario.setNomeAdversario3("Monstro desmotivado de "+ gerarTipo()+ " level: "+ adversario.getLevelAdversario());
+		adversario.setNomeAdversario4("Monstro infeliz de "+ gerarTipo()+ " level: "+ adversario.getLevelAdversario());
+		
+		switch (gerarAdversario) {
+		case 0:
+			System.out.println(adversario.getNomeAdversario1());
+			break;
+		case 1:
+			System.out.println(adversario.getNomeAdversario2());
+			break;
+		case 2:
+			System.out.println(adversario.getNomeAdversario3());
+			break;
+		case 3:
+			System.out.println(adversario.getNomeAdversario4());
+			break;
+			
+		}
+		return gerarAdversario;
+		
+	}
+	
 	public int ataqueUsuario() {
 		ler = new Scanner(System.in);
 		System.out.println("Escolha seu ataque:");
@@ -23,7 +65,7 @@ public class Jogo implements InterfaceJogo {
 
 	}
 
-	public int ataqueComputador() {
+	public int ataqueAdversario() {
 		Random gerador = new Random();
 		return gerador.nextInt(5) + 1;
 		//int gerador = 7 ;
@@ -32,11 +74,12 @@ public class Jogo implements InterfaceJogo {
 	
 	public int gerarTipo() {
 		Random gerador = new Random();
-		int gerarTipo = gerador.nextInt(4);
-		tipo.setAgua("agua");
-		tipo.setFogo("fogo");
-		tipo.setGelo("gelo");
-		tipo.setTerra("terra");
+		int gerarTipo = gerador.nextInt(4);	
+		//PERGUNTAR AO PROFESSOR
+		//tipo.setAgua("agua");
+		//tipo.setFogo("fogo");
+		//tipo.setGelo("gelo");
+		//tipo.setTerra("terra");
 		switch (gerarTipo) {
 		case 0:
 			System.out.println(tipo.getAgua());	
@@ -54,9 +97,7 @@ public class Jogo implements InterfaceJogo {
 		}
 		return gerarTipo;
 	}
-	
 
-	
 	public int criarMonstro() {
 		ler = new Scanner(System.in);
 		System.out.println("VOCE GANHOU UM MONSTRO! dÊ um nome a ele: ");
@@ -78,18 +119,17 @@ public class Jogo implements InterfaceJogo {
 
 	public int batalha() {
 
-		int contagemEspecial = 5;
 		int escolhaAtaque;
 		int i = 1;
-
+		monstro.setHpUsuario(2);
+		
 		Adversario adversario = new Adversario();
 		adversario.setHpComputador(100);
-		monstro.setHpUsuario(100);
 		
 		Habilidades habilidade = new Habilidades();
 		habilidade.setSocos("Aplicou um soco");
 		habilidade.setEspecial("Aplicou um ataque especial");
-		
+		habilidade.setContagem(5);
 		
 		HabilidadesAdversario habilidadeAdversario = new HabilidadesAdversario();
 		habilidadeAdversario.setSocos("Monstro Adversario lhe aplicou um soco em ");
@@ -98,16 +138,11 @@ public class Jogo implements InterfaceJogo {
 		//habilidadeAdversario.setAtirou("Monstro Adversario Atirou com "+ gerarTipo() +" em " );
 	
 
-		// monstro.setHpComputador(100);
-
-		// monstro.setNome("VOCE GANHOU UM MONSTRO! dÊ um nome a ele: " +
-		// ler.nextLine());
-
 		while (monstro.getHpUsuario() > 0) {
 			adversario.setHpComputador(16 + i);
 
 			System.out.println("=======================");
-			System.out.println("INIMIGO" + i);
+			System.out.println("INIMIGO " + i/* + "- " + gerarAdversario()*/ );
 			System.out.println("=======================\n");
 
 			while (monstro.getHpUsuario() > 0 && adversario.getHpComputador() > 0) {
@@ -115,7 +150,7 @@ public class Jogo implements InterfaceJogo {
 					criarMonstro();
 				}
 
-				imprimeHP(monstro.getHpUsuario(), adversario.getHpComputador(), contagemEspecial);
+				imprimeHP(monstro.getHpUsuario(), adversario.getHpComputador(), habilidade.getContagem());
 				escolhaAtaque = ataqueUsuario();
 				switch (escolhaAtaque) {
 				case 1:
@@ -125,11 +160,11 @@ public class Jogo implements InterfaceJogo {
 					// hpComputador -=7
 					break;
 				case 2:
-					if (contagemEspecial > 0) {
+					if (habilidade.getContagem() > 0) {
 						System.out.println(monstro.getNome() + " " + habilidade.getEspecial());
 						adversario.setHpComputador(adversario.getHpComputador() - 20);
-						// hpComputador -= 20;
-						contagemEspecial--;
+						//contagemEspecial--;
+						habilidade.setContagem(habilidade.getContagem()-1);
 					} else {
 						System.out.println(monstro.getNome() + " não possui mais Ataques especiais!.");
 					}
@@ -143,37 +178,36 @@ public class Jogo implements InterfaceJogo {
 					break;
 				}
 				if (adversario.getHpComputador() > 0) {
-					escolhaAtaque = ataqueComputador();
+					escolhaAtaque = ataqueAdversario();
 					switch (escolhaAtaque) {
 					case 1:
 						System.out.println( habilidadeAdversario.getSocos() + " " + monstro.getNome());
 						monstro.setHpUsuario(monstro.getHpUsuario() - 2 + (int) (i / 5));
-						// hpUsuario -= 2 + (int) (i / 5);
 						break;
 
 					case 2:
 						System.out.println( habilidadeAdversario.getSocos() + " " + monstro.getNome());
-						monstro.setHpUsuario(monstro.getHpUsuario() - 2 + (int) (i / 5));
+						monstro.setHpUsuario(monstro.getHpUsuario() - 2+ (int) (i / 5));
 						break;
 					case 3:
 						System.out.println( habilidadeAdversario.getChutes()+ " " + monstro.getNome());
-						monstro.setHpUsuario(monstro.getHpUsuario() - 3 + (int) (i / 5));
+						monstro.setHpUsuario(monstro.getHpUsuario() - 3+ (int) (i / 5));
 						break;
 
 					case 4:
 						System.out.println( habilidadeAdversario.getChutes()+ " " + monstro.getNome());
-						monstro.setHpUsuario(monstro.getHpUsuario() - 3 + (int) (i / 5));
+						monstro.setHpUsuario(monstro.getHpUsuario() - 3+ (int) (i / 5));
 						break;
 
 					case 5:
 						System.out.println( habilidadeAdversario.getEspecial()+ " " + monstro.getNome());
-						monstro.setHpUsuario(monstro.getHpUsuario() - 5 + (int) (i / 5));
+						monstro.setHpUsuario(monstro.getHpUsuario() - 5+ (int) (i / 5));
 						;
 						break;
 					
 					case 6:
 						System.out.println( habilidadeAdversario.getEspecial()+ " " + monstro.getNome());
-						monstro.setHpUsuario(monstro.getHpUsuario() - 5 + (int) (i / 5));
+						monstro.setHpUsuario(monstro.getHpUsuario() - 5+ (int) (i / 5));
 						;
 						break;
 	
@@ -185,28 +219,25 @@ public class Jogo implements InterfaceJogo {
 					System.out.println("inimigo derrotado");
 
 				}
-				
-				
-				
-				/*				RESETE N SEI FAZER
-				if (monstro.getHpUsuario() > 0) {
-					monstro.setHpUsuario(monstro.getHpUsuario()+5);
-					if (monstro.getHpUsuario() > 150) {
-						monstro.setHpUsuario(100);
-						// hpUsuario = 150;
+
+			}
+			if (monstro.getHpUsuario() > 0) {
+				monstro.setHpUsuario(monstro.getHpUsuario()+5);
+				if (monstro.getHpUsuario() > 2) {
+					monstro.setHpUsuario(2);
+				}
+				if (i % 10 == 0) {
+					habilidade.setContagem(+1);
+					if (habilidade.getContagem() > 5) {
+						habilidade.setContagem(5);
 					}
-					if (i % 10 == 0) {
-						contagemEspecial++;
-						if (contagemEspecial > 5) {
-							contagemEspecial = 5;
-						}
-					}
-				} 
-				*/
+				}
+			} else {
+				System.out.println(monstro.getNome() + " morreu");
 			}
 			i++;
 		}
 		return i;
+		
 	}
-
 }

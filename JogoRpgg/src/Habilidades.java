@@ -12,20 +12,29 @@ public class Habilidades {
 	@Id
 	@GeneratedValue
 	private int habilidades;
-	
+
 	@ManyToMany
 	@JoinTable(name = "Habilidades do seu Monstro", joinColumns = @JoinColumn(name = "socos"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
 	private String socos;
-	
+
 	@ManyToMany
 	@JoinTable(name = "Habilidades do seu Monstro", joinColumns = @JoinColumn(name = "especial"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
 	private String especial;
-	
+
 	@ManyToMany
 	@JoinTable(name = "Habilidades do seu Monstro", joinColumns = @JoinColumn(name = "chutes"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
 	private String chutes;
-	
-	
+
+	private int contagem;
+
+	public int getContagem() {
+		return contagem;
+	}
+
+	public void setContagem(int contagem) {
+		this.contagem = contagem;
+	}
+
 	public String getSocos() {
 		return socos;
 	}
