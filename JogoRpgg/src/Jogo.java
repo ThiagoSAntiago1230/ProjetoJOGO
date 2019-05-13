@@ -7,11 +7,9 @@ import javax.persistence.Id;
 public class Jogo implements InterfaceJogo {
 	@Id
 	private int jogo_id;
-	
 	private Scanner ler;
 
 	Monstros monstro = new Monstros();
-	Tipos tipo = new Tipos();
 	Adversario adversario = new Adversario();
 
 	
@@ -31,12 +29,32 @@ public class Jogo implements InterfaceJogo {
 		Random gerador = new Random();
 		int gerarAdversario = gerador.nextInt(4);
 		adversario.setLevelAdversario(1);
+
 		//PERGUNTAR AO PROFESSOR
 
 		Adversario a1 = new Adversario();
 		a1.setTipoAdversario(gerarTipo());
 		if (a1.getTipoAdversario() == Tipos.AGUA) {
-			a1.setLevelAdversario(levelAdversario);
+			a1.setLevelAdversario(1);
+			a1.setNomeAdversario("Monstro de Agua");
+			
+		}
+		else if (a1.getTipoAdversario() == Tipos.FOGO) {
+			a1.setLevelAdversario(1);
+			a1.setNomeAdversario("Monstro de Fogo");
+			
+
+		}
+		else if (a1.getTipoAdversario() == Tipos.GELO) {
+			a1.setLevelAdversario(1);
+			a1.setNomeAdversario("Monstro de Gelo");
+			
+
+		}
+		else if (a1.getTipoAdversario() == Tipos.TERRA) {
+			a1.setLevelAdversario(1);
+			a1.setNomeAdversario("Monstro de terra");
+			
 			
 		}
 		/*
@@ -81,10 +99,12 @@ public class Jogo implements InterfaceJogo {
 	}
 	
 	public Tipos gerarTipo() {
+		Tipos tipos = new Tipos();
 		Random gerador = new Random();
 		int gerarTipo = gerador.nextInt(4);	
 		switch (gerarTipo) {
 		case 0:
+			
 			return Tipos.AGUA;
 			break;
 		case 1:
@@ -96,7 +116,6 @@ public class Jogo implements InterfaceJogo {
 		case 3:
 			return Tipos.TERRA;
 			break;
-			
 		}
 		return null;
 	}

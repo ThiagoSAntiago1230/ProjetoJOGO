@@ -20,15 +20,15 @@ public class Adversario {
 
 	@ManyToMany
 	@JoinTable(name = "Adversario", joinColumns = @JoinColumn(name = "nomeAdversario1"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
-	public Adversario nomeAdversario1;
+	public String nomeAdversario1;
 	
 	@ManyToMany
 	@JoinTable(name = "Adversario", joinColumns = @JoinColumn(name = "nomeAdversario2"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
-	public Adversario nomeAdversario2;
+	public String nomeAdversario2;
 	
 	@ManyToMany
 	@JoinTable(name = "Adversario", joinColumns = @JoinColumn(name = "nomeAdversario3"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
-	public Adversario nomeAdversario3;
+	public String nomeAdversario3;
 	
 	@ManyToMany
 	@JoinTable(name = "Adversario", joinColumns = @JoinColumn(name = "nomeAdversario4"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
@@ -50,27 +50,27 @@ public class Adversario {
 		this.levelAdversario = levelAdversario;
 	}
 
-	public Adversario getNomeAdversario1() {
+	public String getNomeAdversario1() {
 		return nomeAdversario1;
 	}
 
-	public void setNomeAdversario1(Adversario nomeAdversario1) {
+	public void setNomeAdversario1(String nomeAdversario1) {
 		this.nomeAdversario1 = nomeAdversario1;
 	}
 
-	public Adversario getNomeAdversario2() {
+	public String getNomeAdversario2() {
 		return nomeAdversario2;
 	}
 
-	public void setNomeAdversario2(Adversario nomeAdversario2) {
+	public void setNomeAdversario2(String nomeAdversario2) {
 		this.nomeAdversario2 = nomeAdversario2;
 	}
 
-	public Adversario getNomeAdversario3() {
+	public String getNomeAdversario3() {
 		return nomeAdversario3;
 	}
 
-	public void setNomeAdversario3(Adversario nomeAdversario3) {
+	public void setNomeAdversario3(String nomeAdversario3) {
 		this.nomeAdversario3 = nomeAdversario3;
 	}
 
@@ -90,11 +90,11 @@ public class Adversario {
 		this.hpComputador = hpComputador;
 	}
 
-	public Adversario getNomeAdversario() {
+	public String getNomeAdversario() {
 		return nomeAdversario1;
 	}
 
-	public void setNomeAdversario(Adversario nomeAdversario) {
+	public void setNomeAdversario(String nomeAdversario) {
 		this.nomeAdversario1 = nomeAdversario;
 	}
 
