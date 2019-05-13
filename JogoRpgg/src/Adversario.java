@@ -1,4 +1,5 @@
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,23 +20,21 @@ public class Adversario {
 
 	@ManyToMany
 	@JoinTable(name = "Adversario", joinColumns = @JoinColumn(name = "nomeAdversario1"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
-	public String nomeAdversario1;
+	public Adversario nomeAdversario1;
 	
 	@ManyToMany
 	@JoinTable(name = "Adversario", joinColumns = @JoinColumn(name = "nomeAdversario2"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
-	public String nomeAdversario2;
+	public Adversario nomeAdversario2;
 	
 	@ManyToMany
 	@JoinTable(name = "Adversario", joinColumns = @JoinColumn(name = "nomeAdversario3"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
-	public String nomeAdversario3;
+	public Adversario nomeAdversario3;
 	
 	@ManyToMany
 	@JoinTable(name = "Adversario", joinColumns = @JoinColumn(name = "nomeAdversario4"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
 	public String nomeAdversario4;
 	
-	@ManyToMany
-	@JoinTable(name = "Adversario", joinColumns = @JoinColumn(name = "tipoAdversario5"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
-	public String tipoAdversario;
+	public Tipos tipoAdversario;
 	
 	@ManyToMany
 	@JoinTable(name = "Level Adversario", joinColumns = @JoinColumn(name = "levelAdversario5"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
@@ -51,27 +50,27 @@ public class Adversario {
 		this.levelAdversario = levelAdversario;
 	}
 
-	public String getNomeAdversario1() {
+	public Adversario getNomeAdversario1() {
 		return nomeAdversario1;
 	}
 
-	public void setNomeAdversario1(String nomeAdversario1) {
+	public void setNomeAdversario1(Adversario nomeAdversario1) {
 		this.nomeAdversario1 = nomeAdversario1;
 	}
 
-	public String getNomeAdversario2() {
+	public Adversario getNomeAdversario2() {
 		return nomeAdversario2;
 	}
 
-	public void setNomeAdversario2(String nomeAdversario2) {
+	public void setNomeAdversario2(Adversario nomeAdversario2) {
 		this.nomeAdversario2 = nomeAdversario2;
 	}
 
-	public String getNomeAdversario3() {
+	public Adversario getNomeAdversario3() {
 		return nomeAdversario3;
 	}
 
-	public void setNomeAdversario3(String nomeAdversario3) {
+	public void setNomeAdversario3(Adversario nomeAdversario3) {
 		this.nomeAdversario3 = nomeAdversario3;
 	}
 
@@ -91,19 +90,19 @@ public class Adversario {
 		this.hpComputador = hpComputador;
 	}
 
-	public String getNomeAdversario() {
+	public Adversario getNomeAdversario() {
 		return nomeAdversario1;
 	}
 
-	public void setNomeAdversario(String nomeAdversario) {
+	public void setNomeAdversario(Adversario nomeAdversario) {
 		this.nomeAdversario1 = nomeAdversario;
 	}
 
-	public String getTipoAdversario() {
+	public Tipos getTipoAdversario() {
 		return tipoAdversario;
 	}
 
-	public void setTipoAdversario(String tipoAdversario) {
+	public void setTipoAdversario(Tipos tipoAdversario) {
 		this.tipoAdversario = tipoAdversario;
 	}
 	

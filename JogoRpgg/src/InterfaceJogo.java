@@ -9,7 +9,7 @@ public interface InterfaceJogo {
 	
 	public int batalha();
 	
-	public int gerarTipo();
+	public Tipos gerarTipo();
 	
 	public int criarMonstro();
 	

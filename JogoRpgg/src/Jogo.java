@@ -32,11 +32,19 @@ public class Jogo implements InterfaceJogo {
 		int gerarAdversario = gerador.nextInt(4);
 		adversario.setLevelAdversario(1);
 		//PERGUNTAR AO PROFESSOR
+
+		Adversario a1 = new Adversario();
+		a1.setTipoAdversario(gerarTipo());
+		if (a1.getTipoAdversario() == Tipos.AGUA) {
+			a1.setLevelAdversario(levelAdversario);
+			
+		}
+		/*
 		adversario.setNomeAdversario1("Monstro sombrio de "+ gerarTipo()+ " level: "+ adversario.getLevelAdversario());
 		adversario.setNomeAdversario2("Monstro motivado de "+ gerarTipo()+ " level: "+ adversario.getLevelAdversario());
 		adversario.setNomeAdversario3("Monstro desmotivado de "+ gerarTipo()+ " level: "+ adversario.getLevelAdversario());
 		adversario.setNomeAdversario4("Monstro infeliz de "+ gerarTipo()+ " level: "+ adversario.getLevelAdversario());
-		
+		*/
 		switch (gerarAdversario) {
 		case 0:
 			System.out.println(adversario.getNomeAdversario1());
@@ -72,30 +80,25 @@ public class Jogo implements InterfaceJogo {
 		//return gerador;
 	}
 	
-	public int gerarTipo() {
+	public Tipos gerarTipo() {
 		Random gerador = new Random();
 		int gerarTipo = gerador.nextInt(4);	
-		//PERGUNTAR AO PROFESSOR
-		//tipo.setAgua("agua");
-		//tipo.setFogo("fogo");
-		//tipo.setGelo("gelo");
-		//tipo.setTerra("terra");
 		switch (gerarTipo) {
 		case 0:
-			System.out.println(tipo.getAgua());	
+			return Tipos.AGUA;
 			break;
 		case 1:
-			System.out.println(tipo.getFogo());
+			return Tipos.FOGO;
 			break;
 		case 2:
-			System.out.println(tipo.getGelo());	
+			return Tipos.GELO;
 			break;
 		case 3:
-			System.out.println(tipo.getTerra());
+			return Tipos.TERRA;
 			break;
 			
 		}
-		return gerarTipo;
+		return null;
 	}
 
 	public int criarMonstro() {

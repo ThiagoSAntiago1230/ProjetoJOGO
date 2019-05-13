@@ -13,10 +13,12 @@ public class Main {
 		
 		while (continua == 1) {
 			
+			jogo.gerarTipo();
+			
 			//jogo.gerarAdversario();
 
 			
-			jogo.batalha();
+			//jogo.batalha();
 
 			int pontos = jogo.batalha();
 			System.out.println("Usuario chegou a " + pontos + " pontos ");
