@@ -13,13 +13,13 @@ public class Main {
 		
 		while (continua == 1) {
 			
-			jogo.gerarTipo();
+			//jogo.gerarTipo();
 			
 			//jogo.gerarAdversario();
 
 			
 			//jogo.batalha();
-
+			
 			int pontos = jogo.batalha();
 			System.out.println("Usuario chegou a " + pontos + " pontos ");
 			if(pontos > recorde) {

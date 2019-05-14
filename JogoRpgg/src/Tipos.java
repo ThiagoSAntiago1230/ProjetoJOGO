@@ -1,3 +1,4 @@
 public enum Tipos {
-	GELO(), FOGO, TERRA, AGUA;	
-}
+	    GELO,FOGO,TERRA,AGUA;
+	
+	}
