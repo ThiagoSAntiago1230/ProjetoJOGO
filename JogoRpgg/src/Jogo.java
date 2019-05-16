@@ -253,30 +253,6 @@ public class Jogo implements InterfaceJogo {
 		return gerarAdversario;
 	}
 
-	// EM ANDAMENTO PROFESSOR MONGOLOID
-	/*
-	 * public int gerarAdversario() { Random gerador = new Random(); int
-	 * gerarAdversario = gerador.nextInt(4); // PERGUNTAR AO PROFESSOR - NÃO
-	 * FUNCIONA AINDA POR QUE O ENUM DE TIPOS NÃO ESTA RETORNANDO NADA Jogo jogo1 =
-	 * new Jogo(); Adversario a1 = new Adversario(); Adversario a2 = new
-	 * Adversario(); Adversario a3 = new Adversario(); Adversario a4 = new
-	 * Adversario(); a1.setTipoAdversario(gerarTipo()); if (a1.getTipoAdversario()
-	 * == Tipos.AGUA) { a1.setLevelAdversario(1);
-	 * a1.setNomeAdversario("Monstro de Agua"); a1.setHpComputador(100);
-	 * jogo1.ataqueAdversarioGelo();
-	 * 
-	 * } else if (a2.getTipoAdversario() == Tipos.FOGO) { a2.setLevelAdversario(1);
-	 * a2.setNomeAdversario("Monstro de Fogo"); a2.setHpComputador(100);
-	 * jogo1.ataqueAdversarioFogo();
-	 * 
-	 * } else if (a3.getTipoAdversario() == Tipos.GELO) { a3.setLevelAdversario(1);
-	 * a3.setNomeAdversario("Monstro de Gelo"); a3.setHpComputador(100);
-	 * jogo1.ataqueAdversarioGelo();
-	 * 
-	 * } else if (a4.getTipoAdversario() == Tipos.TERRA) { a4.setLevelAdversario(1);
-	 * a4.setNomeAdversario("Monstro de terra"); a4.setHpComputador(100);
-	 * jogo1.ataqueAdversarioTerra(); } return gerarAdversario; }
-	 */
 	public int ataqueUsuario() {
 		ler = new Scanner(System.in);
 		System.out.println("Escolha seu ataque:");
