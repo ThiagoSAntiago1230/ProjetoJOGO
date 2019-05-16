@@ -14,6 +14,7 @@ public class Main {
 		while (continua == 1) {
 			
 			//jogo.gerarTipo();
+			//jogo.gerarTipo2();
 			
 			//jogo.gerarAdversario();
 
@@ -26,7 +27,7 @@ public class Main {
 				recorde = pontos;
 			}
 			System.out.println("RECORDE ATUAL = " + recorde);
-
+			
 			
 			System.out.println("FIM DE JOGO. Deseja continuar? (1) Sim (2) Não");
 			continua = ler.nextInt();

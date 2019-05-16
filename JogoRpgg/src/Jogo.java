@@ -9,9 +9,9 @@ public class Jogo implements InterfaceJogo {
 	@Id
 	private int jogo_id;
 	private Scanner ler;
+	Tipos2 tipos2 = new Tipos2();
 	// Tipos tipos = new Tipos();
 
-	Jogo jogo = new Jogo();
 	Monstros monstro = new Monstros();
 	Adversario adversario = new Adversario();
 
@@ -214,40 +214,69 @@ public class Jogo implements InterfaceJogo {
 	public int gerarAdversario() {
 		Random gerador = new Random();
 		int gerarAdversario = gerador.nextInt(4);
-		// PERGUNTAR AO PROFESSOR - NÃO FUNCIONA AINDA POR QUE O ENUM DE TIPOS NÃO ESTA RETORNANDO NADA
-
+		// PERGUNTAR AO PROFESSOR - NÃO FUNCIONA AINDA POR QUE O ENUM DE TIPOS NÃO ESTA
+		// RETORNANDO NADA
+		Jogo jogo1 = new Jogo();
 		Adversario a1 = new Adversario();
 		Adversario a2 = new Adversario();
 		Adversario a3 = new Adversario();
 		Adversario a4 = new Adversario();
-		a1.setTipoAdversario(gerarTipo());
-		if (a1.getTipoAdversario() == Tipos.AGUA) {
+		this.gerarTipo2();
+		if (tipos2.getAtributoTipo().equals("Agua")) {
+			a1.setTipoAdversario(tipos2);
 			a1.setLevelAdversario(1);
 			a1.setNomeAdversario("Monstro de Agua");
 			a1.setHpComputador(100);
-			jogo.ataqueAdversarioGelo();
+			jogo1.ataqueAdversarioAgua();
 
-		} else if (a2.getTipoAdversario() == Tipos.FOGO) {
-			a2.setLevelAdversario(1);
+		} else if (tipos2.getAtributoTipo().equals("Fogo")) {
+			a2.setTipoAdversario(tipos2);
+			a1.setLevelAdversario(1);
 			a2.setNomeAdversario("Monstro de Fogo");
 			a2.setHpComputador(100);
-			jogo.ataqueAdversarioFogo();
+			jogo1.ataqueAdversarioFogo();
 
-		} else if (a3.getTipoAdversario() == Tipos.GELO) {
-			a3.setLevelAdversario(1);
+		} else if (tipos2.getAtributoTipo().equals("Gelo")) {
+			a3.setTipoAdversario(tipos2);
+			a1.setLevelAdversario(1);
 			a3.setNomeAdversario("Monstro de Gelo");
 			a3.setHpComputador(100);
-			jogo.ataqueAdversarioGelo();
+			jogo1.ataqueAdversarioGelo();
 
-		} else if (a4.getTipoAdversario() == Tipos.TERRA) {
-			a4.setLevelAdversario(1);
+		} else if (tipos2.getAtributoTipo().equals("Terra")) {
+			a4.setTipoAdversario(tipos2);
+			a1.setLevelAdversario(1);
 			a4.setNomeAdversario("Monstro de terra");
 			a4.setHpComputador(100);
-			jogo.ataqueAdversarioTerra();
+			jogo1.ataqueAdversarioTerra();
 		}
 		return gerarAdversario;
 	}
 
+	// EM ANDAMENTO PROFESSOR MONGOLOID
+	/*
+	 * public int gerarAdversario() { Random gerador = new Random(); int
+	 * gerarAdversario = gerador.nextInt(4); // PERGUNTAR AO PROFESSOR - NÃO
+	 * FUNCIONA AINDA POR QUE O ENUM DE TIPOS NÃO ESTA RETORNANDO NADA Jogo jogo1 =
+	 * new Jogo(); Adversario a1 = new Adversario(); Adversario a2 = new
+	 * Adversario(); Adversario a3 = new Adversario(); Adversario a4 = new
+	 * Adversario(); a1.setTipoAdversario(gerarTipo()); if (a1.getTipoAdversario()
+	 * == Tipos.AGUA) { a1.setLevelAdversario(1);
+	 * a1.setNomeAdversario("Monstro de Agua"); a1.setHpComputador(100);
+	 * jogo1.ataqueAdversarioGelo();
+	 * 
+	 * } else if (a2.getTipoAdversario() == Tipos.FOGO) { a2.setLevelAdversario(1);
+	 * a2.setNomeAdversario("Monstro de Fogo"); a2.setHpComputador(100);
+	 * jogo1.ataqueAdversarioFogo();
+	 * 
+	 * } else if (a3.getTipoAdversario() == Tipos.GELO) { a3.setLevelAdversario(1);
+	 * a3.setNomeAdversario("Monstro de Gelo"); a3.setHpComputador(100);
+	 * jogo1.ataqueAdversarioGelo();
+	 * 
+	 * } else if (a4.getTipoAdversario() == Tipos.TERRA) { a4.setLevelAdversario(1);
+	 * a4.setNomeAdversario("Monstro de terra"); a4.setHpComputador(100);
+	 * jogo1.ataqueAdversarioTerra(); } return gerarAdversario; }
+	 */
 	public int ataqueUsuario() {
 		ler = new Scanner(System.in);
 		System.out.println("Escolha seu ataque:");
@@ -264,26 +293,41 @@ public class Jogo implements InterfaceJogo {
 		// return gerador;
 	}
 
+	public Tipos2 gerarTipo2() {
 
-	public Tipos gerarTipo() {
 		Random gerador = new Random();
 		int gerarTipo = gerador.nextInt(4);
 		switch (gerarTipo) {
-		case 0:
-			return Tipos.AGUA;
-
 		case 1:
-			return Tipos.FOGO;
-
+			tipos2.setAtributoTipo("Gelo");
+			break;
 		case 2:
-			return Tipos.GELO;
-
+			tipos2.setAtributoTipo("Fogo");
+			break;
 		case 3:
-			return Tipos.TERRA;
-
+			tipos2.setAtributoTipo("Agua");
+			break;
+		case 4:
+			tipos2.setAtributoTipo("Terra");
+			break;
+		default:
+			break;
 		}
-		return null;
+		return tipos2;
 	}
+
+	/*
+	 * public Tipos gerarTipo() { Random gerador = new Random(); int gerarTipo =
+	 * gerador.nextInt(4); switch (gerarTipo) { case 0: return Tipos.AGUA;
+	 * 
+	 * case 1: return Tipos.FOGO;
+	 * 
+	 * case 2: return Tipos.GELO;
+	 * 
+	 * case 3: return Tipos.TERRA;
+	 * 
+	 * } return null; }
+	 */
 
 	public int criarMonstro() {
 		ler = new Scanner(System.in);
@@ -424,5 +468,11 @@ public class Jogo implements InterfaceJogo {
 		}
 		return i;
 
+	}
+
+	@Override
+	public Tipos gerarTipo() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

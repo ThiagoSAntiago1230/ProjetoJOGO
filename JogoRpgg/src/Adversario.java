@@ -29,7 +29,7 @@ public class Adversario {
 		this.nomeAdversario = nomeAdversario;
 	}
 
-	public Tipos tipoAdversario;
+	public Tipos2 tipoAdversario;
 	
 	@ManyToMany
 	@JoinTable(name = "Level Adversario", joinColumns = @JoinColumn(name = "levelAdversario5"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
@@ -61,11 +61,11 @@ public class Adversario {
 
 	
 
-	public Tipos getTipoAdversario() {
+	public Tipos2 getTipoAdversario() {
 		return tipoAdversario;
 	}
 
-	public void setTipoAdversario(Tipos tipoAdversario) {
+	public void setTipoAdversario(Tipos2 tipoAdversario) {
 		this.tipoAdversario = tipoAdversario;
 	}
 	
