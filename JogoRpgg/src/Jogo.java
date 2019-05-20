@@ -214,8 +214,6 @@ public class Jogo implements InterfaceJogo {
 	public int gerarAdversario() {
 		Random gerador = new Random();
 		int gerarAdversario = gerador.nextInt(4);
-		// PERGUNTAR AO PROFESSOR - NÃO FUNCIONA AINDA POR QUE O ENUM DE TIPOS NÃO ESTA
-		// RETORNANDO NADA
 		Jogo jogo1 = new Jogo();
 		Adversario a1 = new Adversario();
 		Adversario a2 = new Adversario();
@@ -360,10 +358,9 @@ public class Jogo implements InterfaceJogo {
 				switch (escolhaAtaque) {
 				case 1:
 					System.out.println(monstro.getNome() + " " + habilidade.getSocos());
-
 					adversario.setHpComputador(adversario.getHpComputador() - 7);
-					// hpComputador -=7
 					break;
+					
 				case 2:
 					if (habilidade.getContagem() > 0) {
 						System.out.println(monstro.getNome() + " " + habilidade.getEspecial());
@@ -383,7 +380,11 @@ public class Jogo implements InterfaceJogo {
 					break;
 				}
 				if (adversario.getHpComputador() > 0) {
-					escolhaAtaque = ataqueAdversario();
+					//escolhaAtaque = ataqueAdversario();
+					Jogo jogo = new Jogo();
+					jogo.gerarAdversario();
+									
+					/*
 					switch (escolhaAtaque) {
 					case 1:
 						System.out.println(habilidadeAdversario.getSocos() + " " + monstro.getNome());
@@ -420,12 +421,14 @@ public class Jogo implements InterfaceJogo {
 						System.out.println("Monstro Adversario Atirou com " + gerarTipo() + " em " + monstro.getNome());
 						monstro.setHpUsuario(monstro.getHpUsuario() - 20 + (int) (i / 5));
 					}
+					*/
 				} else {
 					System.out.println("inimigo derrotado");
 
 				}
 
 			}
+			
 			if (monstro.getHpUsuario() > 0) {
 				monstro.setHpUsuario(monstro.getHpUsuario() + 5);
 				if (monstro.getHpUsuario() > 2) {
